@@ -1,0 +1,120 @@
+# import sym is where we are getting all the libaries from python and we're here trying to choose one of them
+import sys 
+# this is where we getting the pygame from the libaries we are using code from pass people who use it before me.
+import pygame 
+#this is where we are starting up pygame on my laptop
+pygame.init() 
+# this is where we get all the dimensions, colors, and variables for the calculator we are going to make 
+width = 500 
+height = 500
+black = [0,0,0]
+blue = [0,0,255]
+running = True 
+yellow = [225,225,0] 
+pink = [225,0,225] 
+green = [0,225,0]
+white = [225,225,225] 
+dark_olive_green = [85,107,47] 
+wheat = [245,222,179] 
+dark_violet = [148,0,211] 
+maroon = [128,0,0]
+grey = [128,128,128] 
+# this is where we are making the length and the width of the game itself 
+screen = pygame.display.set_mode((width,height)) 
+# this is where we are filling the screen with the color black from above 
+screen.fill(black) 
+# we are naming program my name
+pygame.display.set_caption("Bomi")
+
+# this is where we are getting all our squares and lines for the buttons for the calculator
+
+pygame.draw.rect(screen,blue,(20,150,50,50)) 
+
+pygame.draw.line(screen,grey,[30,70],[470,70],70)
+
+pygame.draw.rect(screen,blue,(80,150,50,50)) 
+pygame.draw.rect(screen,blue,(140,150,50,50)) 
+pygame.draw.rect(screen,blue,(200,150,50,50)) 
+pygame.draw.rect(screen,blue,(200,210,50,50)) 
+pygame.draw.rect(screen,blue,(140,210,50,50)) 
+pygame.draw.rect(screen,blue,(80,210,50,50)) 
+pygame.draw.rect(screen,blue,(20,210,50,50)) 
+pygame.draw.rect(screen,blue,(20,270,50,50)) 
+pygame.draw.rect(screen,blue,(80,270,50,50)) 
+pygame.draw.rect(screen,blue,(140,270,50,50))
+pygame.draw.rect(screen,blue,(200,270,50,50)) 
+pygame.draw.rect(screen,maroon,(300,150,50,50)) 
+pygame.draw.rect(screen,maroon,(370,150,50,50)) 
+pygame.draw.rect(screen,maroon,(300,210,50,50)) 
+pygame.draw.rect(screen,maroon,(370,210,50,50)) 
+pygame.draw.rect(screen,maroon,(300,270,50,50)) 
+pygame.draw.rect(screen,maroon,(370,270,50,50)) 
+
+# this where we are putting lables for each square and line for the calculator
+
+f = pygame.font.Font(None, 70) 
+surf = f.render("1", 1, (0,0,0))
+screen.blit(surf,(35,150))
+surf = f.render("2", 1, (0,0,0)) 
+screen.blit(surf,(90,150))
+surf = f.render("3", 1, (0,0,0))
+screen.blit(surf,(150,150)) 
+surf = f.render("4", 1, (0,0,0))
+screen.blit(surf,(210,150)) 
+surf = f.render("8", 1, (0,0,0))
+screen.blit(surf,(210,210)) 
+surf = f.render("7", 1, (0,0,0))
+screen.blit(surf,(150,210)) 
+surf = f.render("6", 1, (0,0,0))
+screen.blit(surf,(90,210)) 
+surf = f.render("5", 1, (0,0,0))
+screen.blit(surf,(30,210)) 
+surf = f.render("9", 1, (0,0,0))
+screen.blit(surf,(30,270)) 
+surf = f.render("=", 1, (0,0,0))
+screen.blit(surf,(210,270)) 
+surf = f.render("+", 1, (0,0,0))
+screen.blit(surf,(310,150)) 
+surf = f.render("-", 1, (0,0,0)) 
+screen.blit(surf,(385,150))
+surf = f.render("/", 1, (0,0,0))
+screen.blit(surf,(310,210)) 
+surf = f.render(".", 1, (0,0,0)) 
+screen.blit(surf,(100,270))
+surf = f.render("-", 1, (0,0,0)) 
+screen.blit(surf,(155,270))
+surf = f.render("*", 1, (0,0,0)) 
+screen.blit(surf,(385,225)) 
+
+# this is where we are getting technical by making the it run always and making an exit key so we can exit out of the program
+
+pygame.display.update()
+x_pos = 40
+n = 0 
+while running: # this keeps the the program running 
+    for event in pygame.event.get(): # this gets any event from the pygame library 
+        if event.type == pygame.QUIT: # this makes it to where we can exit to the program and same goes for line 97
+            sys.exit() 
+            
+        if event.type == pygame.KEYDOWN: # this pulls an event from pygame library so when any key goes down 
+            if n < 11:             
+                user_input = event.key
+                if event.mod & pygame.KMOD_LSHIFT:
+                    if event.key == pygame.K_EQUALS: 
+                        surf = f.render("+", 1, (225,225,225))
+                        screen.blit(surf,(x_pos,50))
+                        n = n + 1
+                        x_pos = x_pos + 40
+                if user_input in [pygame.K_0,pygame.K_1,pygame.K_2,pygame.K_3,pygame.K_4,pygame.K_5,pygame.K_6,pygame.K_7,pygame.K_8,pygame.K_9]:
+                    surf = f.render(chr(user_input), 1, (225,225,225))
+                    screen.blit(surf,(x_pos,50))
+                    n = n + 1
+                    x_pos = x_pos + 40
+                pygame.display.flip()
+        
+
+
+
+
+
+
