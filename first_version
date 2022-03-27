@@ -23,8 +23,8 @@ grey = [128,128,128]
 screen = pygame.display.set_mode((width,height)) 
 # this is where we are filling the screen with the color black from above 
 screen.fill(black) 
-# we are naming program my name
-pygame.display.set_caption("Bomi")
+# we are naming program its name
+pygame.display.set_caption("Online Calculator")
 
 # this is where we are getting all our squares and lines for the buttons for the calculator
 
